@@ -26,12 +26,12 @@ export function createStore<T>(initialState: T): Store<T> {
   }
 
   // 更新state
-  function setState(newState: State<T | Function>) {
+  function setState(newState: State<T>) {
 
     // 如果新的state是一个函数，那么执行该函数并将执行结果作为新的state
 
     if (typeof newState === 'function') {
-
+      // TODO: remove as
       state = (newState as (prev: T) => T)(getState());
 
     } else {

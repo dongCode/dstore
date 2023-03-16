@@ -1,6 +1,7 @@
 import './App.css'
 import { Counter } from './demos/Counter'
-import { LogCounter } from './demos/Log'
+import { LogCounter } from './demos/LogCounter'
+import { LogTodoList } from './demos/LogTodoList'
 import { TodoList } from './demos/TodoList'
 
 function App() {
@@ -13,6 +14,8 @@ function App() {
       <TodoList />
       <h1>第三个例子带有中间件的LogCounter</h1>
       <LogCounter />
+      <h1>第四个例子带有多个中间件的LogToDoList</h1>
+      <LogTodoList />
     </div>
   )
 }

@@ -1,25 +1,16 @@
-import { createStore, State, Store, useStore } from "../store";
+import { createStore, State, useStore } from "../store";
 
-function loggingMiddleware<T>(store: Store<T>): Store<T> {
-  const { getState, setState, subscribe } = store;
+type TNext<T> = (state: State<T>) => void
 
-  return {
+// 日志中间件
+function loggingMiddleware<T>(next: TNext<T>): TNext<T> {
 
-    getState,
-
-    setState: (newState: State<T>) => {
-
-      console.log("Old state:", getState());
-
-      setState(newState);
-
-      console.log("New state:", getState());
-
-    },
-
-    subscribe,
-    
+  return (state: State<T>) => {
+    console.log("before update:", counterStore.getState());
+    next(state);
+    console.log("after update:", counterStore.getState());
   };
+
 }
 
 // 创建 store 对象
@@ -27,7 +18,7 @@ const counterStore = createStore(
   {
     count: 0,
   },
-  loggingMiddleware
+  [loggingMiddleware]
 );
 
 // 定义 actions

@@ -12,10 +12,14 @@ export type Store<T> = {
   subscribe: (listener: () => void) => () => void;
 };
 
+export type MiddlewareNext<T> = (state: State<T>) => void;
+
+type Middleware<T> = (next: MiddlewareNext<T>) => MiddlewareNext<T>;
+
 // createStore函数，用于创建store对象
 export function createStore<T>(
   initialState: T,
-  middleware?: (store: Store<T>) => Store<T>
+  middlewares: Middleware<T>[] = []
 ): Store<T> {
   let state: T = initialState;
   let listeners: Array<() => void> = [];
@@ -51,15 +55,13 @@ export function createStore<T>(
     };
   }
 
-  // store对象
-  let store: Store<T> = { getState, setState, subscribe };
-  // 如果有中间件，应用中间件
-  if (middleware) {
-    store = middleware(store);
-  }
-  
+  // 组合中间件处理函数，得到更新后的 setState 函数
+  const enhancedSetState = middlewares.reduceRight(
+    (next, middleware) => middleware(next),
+    setState
+  );
 
-  return store;
+  return { getState, setState: enhancedSetState, subscribe };
 }
 
 // 自定义钩子，用于连接React组件到store

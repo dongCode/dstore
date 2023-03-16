@@ -3,6 +3,7 @@ import { Counter } from './demos/Counter'
 import { LogCounter } from './demos/LogCounter'
 import { LogTodoList } from './demos/LogTodoList'
 import { TodoList } from './demos/TodoList'
+import VirtualizedDemo from './demos/VirtualizedList/demo'
 
 function App() {
 
@@ -16,6 +17,8 @@ function App() {
       <LogCounter />
       <h1>第四个例子带有多个中间件的LogToDoList</h1>
       <LogTodoList />
+      <h1>第四个例子VirtualDemo</h1>
+      <VirtualizedDemo />
     </div>
   )
 }

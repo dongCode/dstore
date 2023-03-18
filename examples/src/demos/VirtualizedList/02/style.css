@@ -1,0 +1,15 @@
+.virtual-scroll-container {
+  overflow-y: auto;
+  border: 1px solid #ccc;
+}
+
+.virtual-scroll-content {
+  box-sizing: border-box;
+}
+
+.virtual-scroll-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}

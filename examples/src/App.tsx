@@ -3,7 +3,9 @@ import { Counter } from './demos/Counter'
 import { LogCounter } from './demos/LogCounter'
 import { LogTodoList } from './demos/LogTodoList'
 import { TodoList } from './demos/TodoList'
-import EasyVirtualizedList from './demos/VirtualizedList/01/EasyVirtualizedList'
+import VirtualScrollDemoA from './demos/VirtualizedList/01/EasyVirtualScroll'
+import VirtualScrollDemoB from './demos/VirtualizedList/02/demo'
+
 
 function App() {
 
@@ -18,7 +20,9 @@ function App() {
       <h1>第四个例子带有多个中间件的LogToDoList</h1>
       <LogTodoList />
       <h1>第四个例子简单01EasyVirtualizedList</h1>
-      <EasyVirtualizedList />
+      <VirtualScrollDemoA />
+      <h1>第五个例子简单02EasyVirtualizedList</h1>
+      <VirtualScrollDemoB />
     </div>
   )
 }

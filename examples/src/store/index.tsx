@@ -77,3 +77,11 @@ export function useStore<T>(store: Store<T>): T {
 
   return state;
 }
+
+// 写一个LRU算法
+function lru() {
+  let cache: { [key: string]: any } = {};
+  let head: { [key: string]: any } = {};
+  let tail: { [key: string]: any } = {};
+  
+}
